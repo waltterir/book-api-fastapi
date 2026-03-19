@@ -1,27 +1,34 @@
-from fastapi import HTTPException, Response , status
-from .models import AuthorBase, AuthorOut
+from fastapi import HTTPException, status
+from sqlmodel import Session, select
+from .models import AuthorBase, Author, AuthorOut
 
-auths = [
-    {"id": 0, "name": "Sofi Oksanen"},
-    {"id": 1, "name": "Vares"},
-    {"id": 2, "name": "RR Martin"},
-]
 
-def get_authors(author: str):
-    if author == "":
-        return auths
+
+def get_authors(session: Session, author: str | None = None):
+    if author == None:
+        return session.exec(select(Author)).all()
     else: 
-        return [a for a in auths if a["name"] == author]
+        return session.exec(select(Author).where(Author.name == author)).all()
 
-def create_new_author(auth_in: AuthorBase):
-    new_id = auths[-1]["id"]+1
-    auth = AuthorOut(id=new_id, **auth_in.model_dump())
-    auths.append(auth.model_dump())
+def create_new_author(session: Session, auth_in: AuthorBase):
+  auth = Author.model_validate(auth_in)
+  session.add(auth)
+  session.commit()
+  session.refresh(auth)
+  return auth
+
+def get_author_by_id(session: Session, auth_id: int):
+    auth = session.get(AuthorOut, auth_id)
+    if not auth: 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author with {auth_id} not found.")
     return auth
 
-def get_author_by_id(auth_id: int):
-    for author in auths:
-        if author["id"] == auth_id:
-            return author
-    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author with {auth_id} not found.")
+def delete_author_by_id(session: Session, auth_id: int):
+    auth = session.get(AuthorOut, auth_id)
+    if not auth:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author with {auth_id} not found.")
+    session.delete(auth)
+    session.commit()
+    return auth
+
 

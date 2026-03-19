@@ -2,7 +2,7 @@ from sqlmodel import Session, create_engine, SQLModel
 
 
 connect_args = {'check_same_thread': False}
-engine = create_engine("sqlite:///books.db", echo=True, 
+engine = create_engine("sqlite:///database.db", echo=True, 
                        connect_args=connect_args)
 
 
