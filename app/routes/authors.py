@@ -20,3 +20,6 @@ def create_new_author(*, session: Session = Depends(get_session), auth_in: Autho
 def get_author_by_id(*, session: Session = Depends(get_session), auth_id: int): 
     return crud.get_author_by_id(session, auth_id)
 
+@router.delete("/{author_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_author_by_id(*, session: Session = Depends(get_session), auth_id: int):
+    return crud.delete_author_by_id(session, auth_id)
