@@ -1,17 +1,18 @@
-from pydantic import BaseModel
+from sqlmodel import SQLModel, create_engine, Field
 
-class BookBase(BaseModel):
+class BookBase(SQLModel):
     author: str
     name: str
 
 class BookIn(BookBase):
     pass
 
-class BookOut(BookBase):
-    id: int
+class BookOut(BookBase, table=True):
+    id: int = Field(default=None, primary_key=True)
 
-class AuthorBase(BaseModel):
+class AuthorBase(SQLModel):
     name: str
 
-class AuthorOut(AuthorBase):
-    id: int
+
+class AuthorOut(AuthorBase, table=True):
+    id: int = Field(default=None, primary_key=True)
