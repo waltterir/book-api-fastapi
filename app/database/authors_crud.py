@@ -4,6 +4,7 @@ from .models import AuthorBase, Author
 
 
 
+
 def get_authors(session: Session, author: str | None = None):
     statement = select(Author)
     if author: 

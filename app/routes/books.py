@@ -13,7 +13,7 @@ def get_all_books(*, session: Session = Depends(get_session), author: str | None
     return crud.get_all_books(session, author)
 
 @router.post("", status_code=status.HTTP_201_CREATED, response_model=BookOut)
-def create_new_shoe(*, session: Session = Depends(get_session), book_in: BookBase):
+def create_new_book(*, session: Session = Depends(get_session), book_in: BookBase):
     return crud.create_new_book(session, book_in)
 
 @router.get("/{book_id}", response_model=BookOut)
