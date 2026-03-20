@@ -2,7 +2,7 @@ from sqlmodel import SQLModel, create_engine, Field
 
 class BookBase(SQLModel):
     author: str
-    name: str
+    title: str
 
 class Book(BookBase, table=True):
      id: int | None = Field(default=None, primary_key=True)

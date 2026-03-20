@@ -32,4 +32,3 @@ def delete_book_by_id(session: Session, book_id: int):
     session.delete(book)
     session.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
-        
