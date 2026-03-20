@@ -20,7 +20,7 @@ def create_new_book(session: Session, book_in: BookBase):
 
 def get_book_by_id(session: Session, book_id: int): 
     book = session.get(Book, book_id)
-    if not book_id: 
+    if not book: 
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Book with {book_id} not found.")
     return book
 
