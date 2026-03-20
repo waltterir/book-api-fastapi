@@ -5,10 +5,7 @@ class BookBase(SQLModel):
     name: str
 
 class Book(BookBase, table=True):
-     id: int |None = Field(default=None, primary_key=True)
-
-class BookIn(BookBase):
-    pass
+     id: int | None = Field(default=None, primary_key=True)
 
 class BookOut(BookBase):
     id: int 
