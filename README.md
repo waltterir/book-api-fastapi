@@ -13,6 +13,12 @@ In progress – actively being developed
 - Basic error handling with HTTP exceptions
 - Modular project structure (routes, database, models)
 
+## Planned features
+- Relationships between models (e.g. books ↔ authors, many-to-many)
+- Authentication & Authorization (JWT-based)
+- User management (multiple users, roles)
+- Pagination and filtering for API endpoints
+
 ## Tech Stack
 
 - FastAPI
