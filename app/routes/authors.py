@@ -13,7 +13,7 @@ def get_authors(*, session: Session = Depends(get_session), author: str | None =
     return crud.get_authors(session, author)
 
 @router.post("", status_code=status.HTTP_201_CREATED, response_model=AuthorOut)
-def create_new_author(*, session: Session = Depends(get_session), auth_in: AuthorBase):
+def create_author(*, session: Session = Depends(get_session), auth_in: AuthorBase):
     return crud.create_new_author(session, auth_in)
 
 @router.get("/{author_id}", response_model=AuthorOut)
