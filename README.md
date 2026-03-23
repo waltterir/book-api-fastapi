@@ -34,9 +34,10 @@ In progress – core functionality implemented, further improvements planned
 
 The following features are planned for future development:
 
-- Additional API endpoints
-- Improved error handling and validation
-- Basic tests
+- JWT-based authentication with user accounts and protected routes
+- Owner-based authorization (users can manage only their own books)
+- Pagination, filtering, and search for book and author endpoints
+- Structured error handling with meaningful HTTP responses
 
 ## Tech Stack
 
