@@ -4,20 +4,36 @@ A REST API for managing books and authors, built using FastAPI, SQLModel, and SQ
 
 ## Status
 
-In progress – actively being developed
+In progress – core functionality implemented, further improvements planned
 
 ## Features
 
 - CRUD operations for books and authors
+- Relational data modeling (Author → Books)
+- Endpoint for retrieving an author's books
 - SQLite database integration with SQLModel
 - Basic error handling with HTTP exceptions
+- Validation to prevent deleting authors with existing books
 - Modular project structure (routes, database, models)
+
+## Example Endpoints
+
+- GET /authors
+- POST /authors
+- GET /authors/{id}
+- DELETE /authors/{id}
+
+- GET /books
+- POST /books
+- GET /books/{id}
+- DELETE /books/{id}
+
+- GET /authors/{id}/books
 
 ## Planned Features
 
 The following features are planned for future development:
 
-- Relationships between models (e.g. books and authors, many-to-many)
 - Additional API endpoints
 - Improved error handling and validation
 - Basic tests
