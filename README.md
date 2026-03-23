@@ -1,6 +1,6 @@
 # Book API (FastAPI)
 
-A REST API for managing books and authors, built with FastAPI, SQLModel and SQLite.
+A REST API for managing books and authors, built using FastAPI, SQLModel, and SQLite.
 
 ## Status
 
@@ -17,10 +17,11 @@ In progress – actively being developed
 
 The following features are planned for future development:
 
-- Relationships between models (e.g. books ↔ authors, many-to-many)
-- Authentication & Authorization (JWT-based)
+- Relationships between models (e.g. books and authors, many-to-many)
+- Authentication and authorization (JWT-based)
 - User management (multiple users, roles)
 - Pagination and filtering for API endpoints
+- Input validation and data validation improvements
 
 ## Tech Stack
 
