@@ -13,7 +13,10 @@ In progress – actively being developed
 - Basic error handling with HTTP exceptions
 - Modular project structure (routes, database, models)
 
-## Planned features
+## Planned Features
+
+The following features are planned for future development:
+
 - Relationships between models (e.g. books ↔ authors, many-to-many)
 - Authentication & Authorization (JWT-based)
 - User management (multiple users, roles)
