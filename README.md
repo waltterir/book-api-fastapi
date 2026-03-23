@@ -18,10 +18,9 @@ In progress – actively being developed
 The following features are planned for future development:
 
 - Relationships between models (e.g. books and authors, many-to-many)
-- Authentication and authorization (JWT-based)
-- User management (multiple users, roles)
-- Pagination and filtering for API endpoints
-- Input validation and data validation improvements
+- Additional API endpoints
+- Improved error handling and validation
+- Basic tests
 
 ## Tech Stack
 
