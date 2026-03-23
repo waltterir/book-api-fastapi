@@ -1,44 +1,43 @@
 from fastapi import HTTPException, status, Response
 from sqlmodel import Session, select
-from .models import AuthorBase, Author, Book 
+from .models import AuthorBase, Author
 
 
 
 
-def get_authors(session: Session, book_id: int | None = None):
+def get_authors(session: Session, name: str | None = None):
     statement = select(Author)
-    if book_id is not None: 
-        statement = statement.where(Author.book_id == book_id)
+    if name is not None: 
+        statement = statement.where(Author.name == name)
     return session.exec(statement).all()
 
-def create_author(session: Session, auth_in: AuthorBase):
-  book = session.get(Book, auth_in.book_id)
-  if not book: 
-    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Book not found")
-  auth = Author.model_validate(auth_in)
-  session.add(auth)
+def create_author(session: Session, author_in: AuthorBase):
+  author = Author.model_validate(author_in)
+  session.add(author)
   session.commit()
-  session.refresh(auth)
-  return auth
+  session.refresh(author)
+  return author
 
-def get_author_by_id(session: Session, auth_id: int):
-    auth = session.get(Author, auth_id)
-    if not auth: 
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author with {auth_id} not found.")
-    return auth
+def get_author_by_id(session: Session, author_id: int):
+    author = session.get(Author, author_id)
+    if not author: 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author with id {author_id} not found.")
+    return author
 
-def delete_author_by_id(session: Session, auth_id: int):
-    auth = session.get(Author, auth_id)
-    if not auth:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author with {auth_id} not found.")
-    session.delete(auth)
+def delete_author_by_id(session: Session, author_id: int):
+    author = session.get(Author, author_id)
+    if not author:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author with id {author_id} not found.")
+    if author.books:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Cannot delete author with existing books.")
+    session.delete(author)
     session.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
-def get_book_authors(book_id: int, session: Session):
-    book = session.get(Book, book_id)
-    if not book: 
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Book not found")
-    return book.authors
+def get_author_books(session: Session, author_id: int):
+    author = session.get(Author, author_id)
+    if not author:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author with id {author_id} not found.")
+    return author
 
 

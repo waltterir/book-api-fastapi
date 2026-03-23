@@ -1,16 +1,19 @@
 from fastapi import HTTPException, Response, status
 from sqlmodel import Session, select
-from .models import BookBase, Book
+from .models import BookBase, Book, Author
 
 
 
-def get_all_books(session: Session, author: str | None = None):
+def get_all_books(session: Session, author_id: int | None = None):
    statement = select(Book)
-   if author: 
-       statement = statement.where(Book.author == author)
+   if author_id is not None: 
+       statement = statement.where(Book.author_id == author_id)
    return session.exec(statement).all()
 
 def create_new_book(session: Session, book_in: BookBase):
+    author = session.get(Author, book_in.author_id)
+    if not author: 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author not found")
     book = Book.model_validate(book_in)
     session.add(book)
     session.commit()
@@ -32,3 +35,4 @@ def delete_book_by_id(session: Session, book_id: int):
     session.delete(book)
     session.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
