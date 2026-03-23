@@ -3,6 +3,7 @@ from ..database.models import AuthorOut, AuthorBase
 from ..database import authors_crud as crud
 from sqlmodel import Session
 from ..database.database import get_session
+from typing import List
 
 
 
@@ -23,3 +24,7 @@ def get_author_by_id(*, session: Session = Depends(get_session), auth_id: int):
 @router.delete("/{author_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_author_by_id(*, session: Session = Depends(get_session), auth_id: int):
     return crud.delete_author_by_id(session, auth_id)
+
+@router.get("/{book_id}/authors", response_model=List["AuthorOut"])
+def get_book_authors(book_id: int, session: Session = Depends(get_session)):
+    return crud.get_book_authors(session, book_id)
