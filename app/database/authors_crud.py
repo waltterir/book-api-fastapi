@@ -5,10 +5,14 @@ from .models import AuthorBase, Author
 
 
 
-def get_authors(session: Session, name: str | None = None):
+def get_authors(session: Session, name: str | None = None, page: int = 1, limit: int = 5):
     statement = select(Author)
     if name is not None: 
         statement = statement.where(Author.name == name)
+    
+    statement = statement.order_by(Author.id)
+    statement = statement.offset((page - 1) * limit)
+    statement = statement.limit(limit)
     return session.exec(statement).all()
 
 def create_author(session: Session, author_in: AuthorBase):
