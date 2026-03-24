@@ -15,6 +15,7 @@ In progress – core functionality implemented, further improvements planned
 - Basic error handling with HTTP exceptions
 - Validation to prevent deleting authors with existing books
 - Modular project structure (routes, database, models)
+- Offset-based pagination (page & limit)
 
 ## Example Endpoints
 
@@ -36,7 +37,7 @@ The following features are planned for future development:
 
 - JWT-based authentication with user accounts and protected routes
 - Owner-based authorization (users can manage only their own books)
-- Pagination, filtering, and search for book and author endpoints
+- Filtering and search for book and author endpoints
 - Structured error handling with meaningful HTTP responses
 
 ## Tech Stack
