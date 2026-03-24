@@ -9,8 +9,8 @@ router = APIRouter(prefix="/books", tags=["Books"])
 
 
 @router.get("/", response_model=list[BookOut])
-def get_all_books(*, session: Session = Depends(get_session), author_id: int | None = None):
-    return crud.get_all_books(session, author_id)
+def get_all_books(*, session: Session = Depends(get_session), author_id: int | None = None, page: int = 1, limit: int = 5):
+    return crud.get_all_books(session, author_id, page, limit)
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=BookOut)
 def create_new_book(*, session: Session = Depends(get_session), book_in: BookBase):

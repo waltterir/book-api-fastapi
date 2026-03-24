@@ -4,10 +4,15 @@ from .models import BookBase, Book, Author
 
 
 
-def get_all_books(session: Session, author_id: int | None = None):
+def get_all_books(session: Session, author_id: int | None = None, page: int = 1, limit: int = 5):
    statement = select(Book)
    if author_id is not None: 
        statement = statement.where(Book.author_id == author_id)
+       
+   statement = statement.order_by(Book.id)
+   statement = statement.offset((page - 1) * limit)
+   statement = statement.limit(limit)
+
    return session.exec(statement).all()
 
 def create_new_book(session: Session, book_in: BookBase):
