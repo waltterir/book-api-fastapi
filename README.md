@@ -41,6 +41,7 @@ The following features are planned for future development:
 
 ## Tech Stack
 
+- Python
 - FastAPI
 - SQLModel
 - SQLite
