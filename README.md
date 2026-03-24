@@ -39,6 +39,7 @@ The following features are planned for future development:
 - Owner-based authorization (users can manage only their own books)
 - Filtering and search for book and author endpoints
 - Structured error handling with meaningful HTTP responses
+- API endpoint testing using pytest
 
 ## Tech Stack
 
