@@ -7,7 +7,7 @@ class BookBase(SQLModel):
 
 class AuthorBase(SQLModel):
     name: str
-    age: int | None = None
+    
 
 class Author(AuthorBase, table=True):
     id: int | None = Field(default=None, primary_key=True)

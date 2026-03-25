@@ -84,11 +84,9 @@ def test_author_not_found(client):
 def test_create_author_fails_without_name(client):
     response = client.post(
         "/authors",
-        json={
-            "age": 29
-            }
+        json={}
         )
-    
     assert response.status_code == 422
+
 
 
