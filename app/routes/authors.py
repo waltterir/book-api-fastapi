@@ -1,19 +1,18 @@
 from fastapi import APIRouter, status, Depends
-from ..database.models import AuthorOut, AuthorBase, AuthorWithBooks
-from ..database import authors_crud as crud
+from ..models.models import AuthorOut, AuthorBase, AuthorWithBooks
+from ..crud import authors_crud as crud
 from sqlmodel import Session
 from ..database.database import get_session
-from typing import List
 
 
 
 router = APIRouter(prefix="/authors", tags=["Authors"])
 
-@router.get("", response_model=list[AuthorOut])
+@router.get("/", response_model=list[AuthorOut])
 def get_authors(*, session: Session = Depends(get_session), name: str | None = None, page: int = 1, limit: int = 5):
     return crud.get_authors(session, name, page, limit)
 
-@router.post("", status_code=status.HTTP_201_CREATED, response_model=AuthorOut)
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=AuthorOut)
 def create_author(*, session: Session = Depends(get_session), auth_in: AuthorBase):
     return crud.create_author(session, auth_in)
 
