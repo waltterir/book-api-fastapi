@@ -64,7 +64,7 @@ Run tests locally:
 
 ```bash
 python -m pytest -v
-```
+
 ````
 
 ## Run locally
