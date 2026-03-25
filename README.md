@@ -8,7 +8,7 @@ In progress – core functionality implemented, further improvements planned
 
 ## Features
 
-- CRUD operations for books and authors
+- Implemented full CRUD operations for books and authors via REST API
 - Relational data modeling (Author → Books)
 - Endpoint for retrieving an author's books
 - SQLite database integration with SQLModel
@@ -16,6 +16,7 @@ In progress – core functionality implemented, further improvements planned
 - Validation to prevent deleting authors with existing books
 - Modular project structure (routes, database, models)
 - Offset-based pagination (page & limit)
+- Wrote comprehensive API tests with pytest (covering CRUD operations, validation, and error cases)
 
 ## Example Endpoints
 
@@ -39,7 +40,6 @@ The following features are planned for future development:
 - Owner-based authorization (users can manage only their own books)
 - Filtering and search for book and author endpoints
 - Structured error handling with meaningful HTTP responses
-- API endpoint testing using pytest
 
 ## Tech Stack
 
@@ -47,6 +47,25 @@ The following features are planned for future development:
 - FastAPI
 - SQLModel
 - SQLite
+
+## Testing
+
+This project includes automated tests written with pytest.
+
+Test coverage includes:
+
+- CRUD operations for authors and books
+- Pagination and query parameter validation
+- Error handling validation (covering 404, 400, 422 cases)
+- Business logic validation (e.g. preventing deletion of authors with existing books)
+
+````md
+Run tests locally:
+
+```bash
+python -m pytest -v
+```
+````
 
 ## Run locally
 
