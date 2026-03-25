@@ -9,6 +9,8 @@ def get_authors(session: Session, name: str | None = None, page: int = 1, limit:
     statement = select(Author)
     if name is not None: 
         statement = statement.where(Author.name == name)
+    if page < 1: 
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Page must be atleast 1")
     
     statement = statement.order_by(Author.id)
     statement = statement.offset((page - 1) * limit)

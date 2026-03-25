@@ -8,6 +8,8 @@ def get_all_books(session: Session, author_id: int | None = None, page: int = 1,
    statement = select(Book)
    if author_id is not None: 
        statement = statement.where(Book.author_id == author_id)
+   if page < 1:
+       raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Page must be atleast 1")
        
    statement = statement.order_by(Book.id)
    statement = statement.offset((page - 1) * limit)
