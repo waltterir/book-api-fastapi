@@ -18,7 +18,7 @@ In progress – core functionality implemented, further improvements planned
 - Offset-based pagination (page & limit)
 - Wrote comprehensive API tests with pytest (covering CRUD operations, validation, and error cases)
 
-## Example Endpoints
+## Endpoints
 
 - GET /authors
 - POST /authors
