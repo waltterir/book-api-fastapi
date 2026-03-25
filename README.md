@@ -68,7 +68,7 @@ python -m pytest -v
 ````
 
 ## Run locally
-
+```md
 Option 1 (recommended):
 uvicorn app.main:app --reload
 
