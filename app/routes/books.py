@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status, Depends
-from ..database.models import BookBase, BookOut
-from ..database import  books_crud as crud
+from ..models.models import BookBase, BookOut
+from ..crud import  books_crud as crud
 from sqlmodel import Session
 from ..database.database import get_session
 

@@ -1,6 +1,6 @@
 from fastapi import HTTPException, status, Response
 from sqlmodel import Session, select
-from .models import AuthorBase, Author
+from ..models.models import AuthorBase, Author
 
 
 
@@ -17,8 +17,10 @@ def get_authors(session: Session, name: str | None = None, page: int = 1, limit:
     statement = statement.limit(limit)
     return session.exec(statement).all()
 
-def create_author(session: Session, author_in: AuthorBase):
+def create_author(session: Session, author_in: AuthorBase, status_code=status.HTTP_201_CREATED):
   author = Author.model_validate(author_in)
+  if not author: 
+      raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author not found")
   session.add(author)
   session.commit()
   session.refresh(author)

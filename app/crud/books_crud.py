@@ -1,6 +1,6 @@
 from fastapi import HTTPException, Response, status
 from sqlmodel import Session, select
-from .models import BookBase, Book, Author
+from ..models.models import BookBase, Book, Author
 
 
 

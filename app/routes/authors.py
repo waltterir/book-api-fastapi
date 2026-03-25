@@ -17,12 +17,12 @@ def create_author(*, session: Session = Depends(get_session), auth_in: AuthorBas
     return crud.create_author(session, auth_in)
 
 @router.get("/{author_id}", response_model=AuthorOut)
-def get_author_by_id(*, session: Session = Depends(get_session), auth_id: int): 
-    return crud.get_author_by_id(session, auth_id)
+def get_author_by_id(*, session: Session = Depends(get_session), author_id: int): 
+    return crud.get_author_by_id(session, author_id)
 
 @router.delete("/{author_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_author_by_id(*, session: Session = Depends(get_session), auth_id: int):
-    return crud.delete_author_by_id(session, auth_id)
+def delete_author_by_id(*, session: Session = Depends(get_session), author_id: int):
+    return crud.delete_author_by_id(session, author_id)
 
         
 @router.get("/{author_id}/books", response_model=AuthorWithBooks)
