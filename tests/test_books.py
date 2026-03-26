@@ -20,9 +20,8 @@ def test_create_book(client):
     payload = {
         "author_id": author_id,
         "title": "Testi Title",
-        "is_owned": False,
-        "is_read": False,
-        "want_to_read": True
+        "release_year": 2000,
+        "genre": "Testi genre",
     }
 
     response = client.post("/books", json=payload)
@@ -43,7 +42,9 @@ def test_book_by_id(client):
 
     payload = {
         "author_id": author_id,
-        "title": "Testi Title"
+        "title": "Testi Title",
+        "release_year": 2000,
+        "genre": "Testi genre",
     }
 
     response = client.post("/books", json=payload)
@@ -56,6 +57,8 @@ def test_book_by_id(client):
     assert data["id"] == book_id
     assert data["title"] == "Testi Title"
     assert data["author_id"] == author_id
+    assert data["release_year"] == 2000
+    assert data["genre"] == "Testi genre"
     
     
     
@@ -70,7 +73,9 @@ def test_delete_book(client):
 
     payload = {
         "author_id": author_id,
-        "title": "Testi Title"
+        "title": "Testi Title",
+        "release_year": 2000,
+        "genre": "Testi genre",
     }
 
     response = client.post("/books", json=payload)
@@ -87,7 +92,9 @@ def test_delete_book_not_found(client):
 def test_create_book_with_invalid_author(client):
     payload = {
         "author_id": 9999,
-        "title": "Testi Title"
+        "title": "Testi Title",
+        "release_year": 2000,
+        "genre": "Testi genre",
     }
 
     response = client.post("/books", json=payload)

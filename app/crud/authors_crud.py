@@ -48,4 +48,20 @@ def get_author_books(session: Session, author_id: int):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author with id {author_id} not found.")
     return author
 
+def update_author(session: Session, author_id: int, author_update: AuthorBase):
+    author = session.get(Author, author_id)
+    if not author: 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Author not found.")
+    author.name = author_update.name
+    session.add(author)
+    session.commit()
+    session.refresh(author)
+    return author
+
+
+    
+
+
+
+
 

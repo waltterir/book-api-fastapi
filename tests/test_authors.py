@@ -67,7 +67,9 @@ def test_delete_author_with_books_fails(client):
         "/books",
         json={
             "title": "The Hobbit",
-            "author_id": author_id
+            "author_id": author_id,
+            "release_year": 2000,
+            "genre": "Testi genre",
         }
     )
 

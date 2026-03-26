@@ -24,3 +24,7 @@ def get_book_by_id(*, session: Session = Depends(get_session), book_id: int):
 @router.delete("/{book_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_book_by_id(*, session: Session = Depends(get_session), book_id: int):
     return crud.delete_book_by_id(session, book_id)
+
+@router.put("/{book_id}", response_model=BookOut)
+def update_book_by_id(*, session: Session = Depends(get_session), book_id: int, book_update: BookBase):
+    return crud.update_book_by_id(session, book_id, book_update)

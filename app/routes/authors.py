@@ -28,3 +28,7 @@ def delete_author_by_id(*, session: Session = Depends(get_session), author_id: i
 @router.get("/{author_id}/books", response_model=AuthorWithBooks)
 def get_author_books(author_id: int, session: Session = Depends(get_session)):
     return crud.get_author_books(session, author_id)
+
+@router.put("/{author_id}", response_model=AuthorOut)
+def update_author(*, session: Session = Depends(get_session), author_id: int, author_update: AuthorBase):
+    return crud.update_author(session, author_id, author_update)

@@ -4,6 +4,8 @@ from sqlmodel import SQLModel, Field, Relationship
 class BookBase(SQLModel):
     author_id: int
     title: str
+    release_year: int | None = None
+    genre: str | None = None
 
 class AuthorBase(SQLModel):
     name: str
