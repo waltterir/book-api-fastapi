@@ -18,6 +18,23 @@ In progress – core functionality implemented, further improvements planned
 - Offset-based pagination (page & limit)
 - Wrote comprehensive API tests with pytest (covering CRUD operations, validation, and error cases)
 
+## Deployment
+
+The API has been deployed to a cloud environment using Google Cloud Platform.
+
+- Deployed the application to an Ubuntu-based VM on GCP
+- Configured networking and firewall rules to expose a public API endpoint
+- Ran the application using Gunicorn with Uvicorn workers
+- Verified the API through a public endpoint and Swagger UI
+
+## Project Direction
+
+This project started as a practice project for learning FastAPI and backend fundamentals.
+
+As development progressed, it evolved into a more feature-rich application. The goal is to expand it into a personal reading tracker API, where users can manage their own reading lists, track reading status, and interact with books and authors.
+
+Planned features such as authentication, authorization, and user-specific data are part of this direction.
+
 ## Endpoints
 
 - GET /authors
@@ -36,8 +53,10 @@ In progress – core functionality implemented, further improvements planned
 
 The following features are planned for future development:
 
-- JWT-based authentication with user accounts and protected routes
-- Owner-based authorization (users can manage only their own books)
+- JWT-based authentication (login, token handling)
+- Role-based authorization (user vs admin)
+- User-specific reading list (read / to-read / reading)
+- Favorite authors functionality
 - Filtering and search for book and author endpoints
 - Structured error handling with meaningful HTTP responses
 
@@ -47,6 +66,7 @@ The following features are planned for future development:
 - FastAPI
 - SQLModel
 - SQLite
+- Gunicorn (application server)
 
 ## Testing
 
@@ -64,13 +84,15 @@ Run tests locally:
 
 ```bash
 python -m pytest -v
-
+```
 ````
 
 ## Run locally
+
 ```md
 Option 1 (recommended):
 uvicorn app.main:app --reload
 
 Option 2 (FastAPI CLI):
 fastapi dev app/main.py
+```
