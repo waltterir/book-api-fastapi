@@ -4,18 +4,36 @@ from ..models.models import BookBase, Book, Author
 
 
 
-def get_all_books(session: Session, author_id: int | None = None, page: int = 1, limit: int = 5):
-   statement = select(Book)
-   if author_id is not None: 
+def get_all_books(
+                session: Session, 
+                author_id: int | None = None,
+                search: str | None = None,
+                genre: str | None = None,
+                release_year: int | None = None,
+                title: str | None = None,
+                page: int = 1, 
+                limit: int = 10):
+    statement = select(Book)
+    if author_id is not None: 
        statement = statement.where(Book.author_id == author_id)
-   if page < 1:
+    if search is not None: 
+       statement = statement.where(Book.title.ilike(f"%{search}%"))
+    if genre is not None: 
+       statement = statement.where(Book.genre == genre)
+    if release_year is not None: 
+       statement = statement.where(Book.release_year == release_year)
+    if title is not None:
+       statement = statement.where(Book.title == title)
+    if page < 1:
        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Page must be atleast 1")
-       
-   statement = statement.order_by(Book.id)
-   statement = statement.offset((page - 1) * limit)
-   statement = statement.limit(limit)
+    if limit < 1:
+       raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Limit must be atleast 1")
+  
+    statement = statement.order_by(Book.id)
+    statement = statement.offset((page - 1) * limit)
+    statement = statement.limit(limit)
 
-   return session.exec(statement).all()
+    return session.exec(statement).all()
 
 def create_new_book(session: Session, book_in: BookBase):
     author = session.get(Author, book_in.author_id)

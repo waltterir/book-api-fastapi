@@ -9,8 +9,13 @@ from ..database.database import get_session
 router = APIRouter(prefix="/authors", tags=["Authors"])
 
 @router.get("/", response_model=list[AuthorOut])
-def get_authors(*, session: Session = Depends(get_session), name: str | None = None, page: int = 1, limit: int = 5):
-    return crud.get_authors(session, name, page, limit)
+def get_authors(*, 
+                session: Session = Depends(get_session), 
+                name: str | None = None, 
+                search: str | None = None,
+                page: int = 1, 
+                limit: int = 5):
+    return crud.get_authors(session, name, search, page, limit)
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=AuthorOut)
 def create_author(*, session: Session = Depends(get_session), auth_in: AuthorBase):
