@@ -38,6 +38,8 @@ def test_author_by_id(client):
     assert data["id"] == author_id
     assert data["name"] == "Testi"
 
+
+
 def test_delete_author(client):
     create_response = client.post(
         "/authors",
@@ -91,4 +93,35 @@ def test_create_author_fails_without_name(client):
     assert response.status_code == 422
 
 
+def test_update_author(client):
+    create_response = client.post(
+        "/authors",
+        json={
+            "name": "Testi"
+        }
+    )
+    assert create_response.status_code == 201
 
+    created_author = create_response.json()
+    author_id = created_author["id"]
+
+    update_response = client.put(
+        f"/authors/{author_id}",
+        json={"name": "Uusi nimi"}
+    )
+    assert update_response.status_code == 200
+
+    updated_author = update_response.json()
+    assert updated_author["id"] == author_id
+    assert updated_author["name"] == "Uusi nimi"
+
+    get_response = client.get(f"/authors/{author_id}")
+    assert get_response.status_code == 200
+
+    data = get_response.json()
+    assert data["id"] == author_id
+    assert data["name"] == "Uusi nimi"
+
+def test_update_author_not_found(client):
+        response = client.get("/authors/99999")
+        assert response.status_code == 404
