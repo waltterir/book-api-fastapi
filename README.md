@@ -37,17 +37,22 @@ Planned features such as authentication, authorization, and user-specific data a
 
 ## Endpoints
 
+### Authors
+
 - GET /authors
 - POST /authors
 - GET /authors/{id}
+- PUT /authors/{author_id}
 - DELETE /authors/{id}
+- GET /authors/{id}/books
+
+### Books
 
 - GET /books
 - POST /books
 - GET /books/{id}
+- PUT /books/{book_id}
 - DELETE /books/{id}
-
-- GET /authors/{id}/books
 
 ## Planned Features
 
