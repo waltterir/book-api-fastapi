@@ -31,7 +31,7 @@ The API has been deployed to a cloud environment using Google Cloud Platform.
 
 This project started as a practice project for learning FastAPI and backend fundamentals.
 
-As development progressed, it evolved into a more feature-rich application. The goal is to expand it into a personal reading tracker API, where users can manage their own reading lists, track reading status, and interact with books and authors.
+The goal is to expand it into a personal reading tracker API, where users can manage their own reading lists, track reading status, and interact with books and authors.
 
 Planned features such as authentication, authorization, and user-specific data are part of this direction.
 
