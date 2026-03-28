@@ -18,7 +18,14 @@ def get_all_books(*,
                 title: str | None = None,
                 page: int = 1, 
                 limit: int = 10):
-    return crud.get_all_books(session, author_id, search, genre, release_year, title, page, limit)
+    return crud.get_all_books(session, 
+                              author_id, 
+                              search, 
+                              genre, 
+                              release_year, 
+                              title, 
+                              page, 
+                              limit)
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=BookOut)
 def create_new_book(*, session: Session = Depends(get_session), book_in: BookBase):

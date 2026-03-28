@@ -1,5 +1,5 @@
 from fastapi import HTTPException, Response, status
-from sqlmodel import Session, select
+from sqlmodel import Session, select, func
 from ..models.models import BookBase, Book, Author
 
 
@@ -19,7 +19,7 @@ def get_all_books(
     if search is not None: 
        statement = statement.where(Book.title.ilike(f"%{search}%"))
     if genre is not None: 
-       statement = statement.where(Book.genre == genre)
+       statement = statement.where(Book.genre == genre) 
     if release_year is not None: 
        statement = statement.where(Book.release_year == release_year)
     if title is not None:
@@ -77,4 +77,8 @@ def update_book_by_id(session: Session, book_id: int, book_update: BookBase):
     session.refresh(book)
     return book
     
-
+def get_book_by_genre(session: Session, book_genre: BookBase):
+    book = session.get(Book, book_genre)
+    if book is None: 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Book genre not found")
+    return book
