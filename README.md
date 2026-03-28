@@ -17,6 +17,8 @@ In progress – core functionality implemented, further improvements planned
 - Modular project structure (routes, database, models)
 - Offset-based pagination (page & limit)
 - Wrote comprehensive API tests with pytest (covering CRUD operations, validation, and error cases)
+- Search and filtering for authors by name and genre
+- Search and filtering for books by title, author_id, genre, and release_year
 
 ## Deployment
 
@@ -62,7 +64,6 @@ The following features are planned for future development:
 - Role-based authorization (user vs admin)
 - User-specific reading list (read / to-read / reading)
 - Favorite authors functionality
-- Filtering and search for book and author endpoints
 - Structured error handling with meaningful HTTP responses
 
 ## Tech Stack
