@@ -1,6 +1,7 @@
 from fastapi import HTTPException, status, Response
 from sqlmodel import Session, select
-from ..models.models import AuthorBase, Author
+from ..models.models import AuthorBase, Author, Book
+
 
 
 
@@ -8,9 +9,12 @@ from ..models.models import AuthorBase, Author
 def get_authors(session: Session,
                 name: str | None = None, 
                 search: str | None = None,
+                authors_genre: str | None = None,
                 page: int = 1, 
-                limit: int = 5):
+                limit: int = 10):
     statement = select(Author)
+    if authors_genre is not None:
+        statement = select(Author).join(Author.books).where(Book.genre == authors_genre).distinct()
     if name is not None: 
         statement = statement.where(Author.name == name)
     if search is not None:

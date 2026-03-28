@@ -13,9 +13,10 @@ def get_authors(*,
                 session: Session = Depends(get_session), 
                 name: str | None = None, 
                 search: str | None = None,
+                authors_genre: str | None = None,
                 page: int = 1, 
-                limit: int = 5):
-    return crud.get_authors(session, name, search, page, limit)
+                limit: int = 10):
+    return crud.get_authors(session, name, search, authors_genre, page, limit)
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=AuthorOut)
 def create_author(*, session: Session = Depends(get_session), auth_in: AuthorBase):
