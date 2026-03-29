@@ -4,21 +4,24 @@ A REST API for managing books and authors, built using FastAPI, SQLModel, and SQ
 
 ## Status
 
-In progress – core functionality implemented, further improvements planned
+In progress — core backend features implemented, currently expanding toward authentication and user-specific data
 
-## Features
+## Core Features
 
 - Implemented full CRUD operations for books and authors via REST API
 - Relational data modeling (Author → Books)
 - Endpoint for retrieving an author's books
+- Offset-based pagination (page & limit)
+- Search and filtering for authors by name and genre
+- Search and filtering for books by title, author_id, genre, and release_year
+
+  ## Backend & Architecture
+
+- Modular project structure (routes, database, models)
 - SQLite database integration with SQLModel
 - Basic error handling with HTTP exceptions
 - Validation to prevent deleting authors with existing books
-- Modular project structure (routes, database, models)
-- Offset-based pagination (page & limit)
 - Wrote comprehensive API tests with pytest (covering CRUD operations, validation, and error cases)
-- Search and filtering for authors by name and genre
-- Search and filtering for books by title, author_id, genre, and release_year
 
 ## Deployment
 
@@ -34,27 +37,6 @@ The API has been deployed to a cloud environment using Google Cloud Platform.
 This project started as a practice project for learning FastAPI and backend fundamentals.
 
 The goal is to expand it into a personal reading tracker API, where users can manage their own reading lists, track reading status, and interact with books and authors.
-
-Planned features such as authentication, authorization, and user-specific data are part of this direction.
-
-## Endpoints
-
-### Authors
-
-- GET /authors
-- POST /authors
-- GET /authors/{id}
-- PUT /authors/{author_id}
-- DELETE /authors/{id}
-- GET /authors/{id}/books
-
-### Books
-
-- GET /books
-- POST /books
-- GET /books/{id}
-- PUT /books/{book_id}
-- DELETE /books/{id}
 
 ## Planned Features
 
@@ -73,6 +55,7 @@ The following features are planned for future development:
 - SQLModel
 - SQLite
 - Gunicorn (application server)
+- Google Cloud (Compute Engine VM)
 
 ## Testing
 
@@ -84,6 +67,26 @@ Test coverage includes:
 - Pagination and query parameter validation
 - Error handling validation (covering 404, 400, 422 cases)
 - Business logic validation (e.g. preventing deletion of authors with existing books)
+
+  ## Endpoints
+
+### Authors
+
+- GET /authors
+- POST /authors
+- GET /authors/{id}
+- PUT /authors/{author_id}
+- DELETE /authors/{id}
+- GET /authors/{id}/books
+
+### Books
+
+- GET /books
+- POST /books
+- GET /books/{id}
+- PUT /books/{book_id}
+- DELETE /books/{id}
+
 
 ````md
 Run tests locally:
