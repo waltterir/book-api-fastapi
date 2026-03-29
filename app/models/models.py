@@ -31,3 +31,17 @@ class AuthorWithBooks(SQLModel):
     id: int 
     name: str
     books: list[BookOut]
+
+
+class User(SQLModel, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    email: str = Field(index=True, unique=True)
+    password_hash: str
+
+class UserCreate(SQLModel):
+    email: str
+    password: int
+
+
+class UserOut(SQLModel):
+    id: int
