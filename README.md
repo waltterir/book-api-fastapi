@@ -15,7 +15,7 @@ In progress — core backend features implemented, currently expanding toward au
 - Search and filtering for authors by name and genre
 - Search and filtering for books by title, author_id, genre, and release_year
 
-  ## Backend & Architecture
+## Backend & Architecture
 
 - Modular project structure (routes, database, models)
 - SQLite database integration with SQLModel
