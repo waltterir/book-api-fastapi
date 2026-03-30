@@ -68,12 +68,12 @@ Test coverage includes:
 - Error handling validation (covering 404, 400, 422 cases)
 - Business logic validation (e.g. preventing deletion of authors with existing books)
 
-  ````md
 Run tests locally:
 
 ```bash
 python -m pytest -v
 ```
+
 
 ## Endpoints
 
