@@ -68,7 +68,14 @@ Test coverage includes:
 - Error handling validation (covering 404, 400, 422 cases)
 - Business logic validation (e.g. preventing deletion of authors with existing books)
 
-  ## Endpoints
+  ````md
+Run tests locally:
+
+```bash
+python -m pytest -v
+```
+
+## Endpoints
 
 ### Authors
 
@@ -86,15 +93,6 @@ Test coverage includes:
 - GET /books/{id}
 - PUT /books/{book_id}
 - DELETE /books/{id}
-
-
-````md
-Run tests locally:
-
-```bash
-python -m pytest -v
-```
-````
 
 ## Run locally
 
