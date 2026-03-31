@@ -36,7 +36,7 @@ class AuthorWithBooks(SQLModel):
 class User(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     email: str = Field(index=True, unique=True)
-    password_hash: str
+    hashed_password: str
 
 class UserCreate(SQLModel):
     email: str
