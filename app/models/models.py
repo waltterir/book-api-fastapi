@@ -1,4 +1,6 @@
 from sqlmodel import SQLModel, Field, Relationship
+from pydantic import BaseModel
+
 
 
 class BookBase(SQLModel):
@@ -47,5 +49,6 @@ class UserLogin(SQLModel):
     password: str
 
 
-class UserOut(SQLModel):
+class UserOut(BaseModel):
     id: int
+    email: str
