@@ -7,6 +7,6 @@ from ..database.database import get_session
 
 router = APIRouter(prefix="/user", tags=["User"])
 
-@router.post("/register", status_code=201, response_model=UserOut)
+@router.post("/register", status_code=status.HTTP_201_CREATED, response_model=UserOut)
 def  create_user(user_data: UserCreate, session: Session = Depends(get_session)):
-    return crud.create_user(user_data, session)
+    return crud.create_user(session, user_data)

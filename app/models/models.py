@@ -42,11 +42,12 @@ class User(SQLModel, table=True):
 
 class UserCreate(BaseModel):
     email: str
-    password: str
+    password: str = Field(min_length=6, max_length=64)
+
 
 class UserLogin(BaseModel):
     email: str
-    password: str
+    password: str = Field(min_length=6, max_length=64)
 
 
 class UserOut(BaseModel):
