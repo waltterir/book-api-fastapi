@@ -1,7 +1,7 @@
 from fastapi import HTTPException, Response, status
 from sqlmodel import Session, select
 from ..models.models import UserCreate, User
-from security import hash_password
+from ..security import hash_password
 
 def get_user_by_email(session: Session, email: str):
     result = session.exec(select(User).where(User.email == email)).first()

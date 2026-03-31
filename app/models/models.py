@@ -40,11 +40,11 @@ class User(SQLModel, table=True):
     email: str = Field(index=True, unique=True)
     hashed_password: str
 
-class UserCreate(SQLModel):
+class UserCreate(BaseModel):
     email: str
     password: str
 
-class UserLogin(SQLModel):
+class UserLogin(BaseModel):
     email: str
     password: str
 
