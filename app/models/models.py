@@ -40,7 +40,11 @@ class User(SQLModel, table=True):
 
 class UserCreate(SQLModel):
     email: str
-    password: int
+    password: str
+
+class UserLogin(SQLModel):
+    email: str
+    password: str
 
 
 class UserOut(SQLModel):
