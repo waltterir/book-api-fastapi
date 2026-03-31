@@ -1,7 +1,7 @@
 from fastapi import HTTPException, Response, status
 from sqlmodel import Session, select
-from ..models.models import UserCreate, User
-from ..security.security import hash_password
+from ..models.models import UserCreate, User, UserLogin
+from ..security.security import hash_password, verify_password
 
 def get_user_by_email(session: Session, email: str):
     result = session.exec(select(User).where(User.email == email)).first()
@@ -22,3 +22,16 @@ def create_user(session: Session, user_data: UserCreate):
     session.refresh(new_user)
     
     return new_user
+
+
+def authenticate_user(session: Session, user_data: UserLogin):
+    user = get_user_by_email(session, user_data.email)
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"Invalid credentials")
+    
+    verified_password = verify_password(user_data.password, user.hashed_password)
+    if not verified_password:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid password")
+    
+    return user
+
