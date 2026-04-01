@@ -10,7 +10,7 @@ def get_user_by_email(session: Session, email: str):
 def create_user(session: Session, user_data: UserCreate):
     existing_user = get_user_by_email(session, user_data.email)
     if existing_user:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Email already registered")
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
     
     hashed_password = hash_password(user_data.password)
     new_user = User(
@@ -27,7 +27,7 @@ def create_user(session: Session, user_data: UserCreate):
 def authenticate_user(session: Session, user_data: UserLogin):
     user = get_user_by_email(session, user_data.email)
     if not user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"Invalid credentials")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
     
     verified_password = verify_password(user_data.password, user.hashed_password)
     if not verified_password:

@@ -12,14 +12,16 @@ oauth2_scheme = HTTPBearer()
 def get_current_user(
     credentials: HTTPAuthorizationCredentials = Depends(oauth2_scheme),
     session: Session = Depends(get_session)
-    ): 
+    ):                                                  # credentials FastAPI kutsuu oauth2_scheme dependencyä
+                                                        # se lukee Authorization-headerin
+                                                        # se antaa tuloksen credentials-muuttujaan
 
-    credentials_exception = HTTPException(
+    credentials_exception = HTTPException(  
         status_code=status.HTTP_401_UNAUTHORIZED, 
         detail="Could not validate credentials", 
-        headers={"WWW-Authenticate": "Bearer"})
+        headers={"WWW-Authenticate": "Bearer"})        # Yhteinen virhepoikkeus
     
-    token = credentials.credentials
+    token = credentials.credentials # Tokenin ottaminen credentials-oliosta
 
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM]) # jwt:n decodaus
@@ -32,6 +34,6 @@ def get_current_user(
     
     user = get_user_by_email(session, email) 
     if user is None:
-        raise credentials_exception
+        raise credentials_exception  
     
     return user
