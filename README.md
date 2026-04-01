@@ -105,10 +105,9 @@ Run tests locally:
 python -m pytest -v
 ```
 
-
 ## 📁 Project Structure
 
-````text
+```text
 app/
 ├── main.py
 ├── routes/        # API endpoints
@@ -118,7 +117,7 @@ app/
 └── security/      # Auth & JWT logic
 
 tests/             # Automated tests
-````
+```
 
 ## Tech Stack
 
@@ -140,4 +139,4 @@ The following features are planned for future development:
 - Containerize the application with Docker
 - Role-based authorization (user vs admin)
 - User-specific data (reading lists / favorites)
-- Favorite authors functionalit
+- Favorite authors functional
