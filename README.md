@@ -105,10 +105,10 @@ Run tests locally:
 python -m pytest -v
 ```
 
-````md
+
 ## 📁 Project Structure
 
-```text
+````text
 app/
 ├── main.py
 ├── routes/        # API endpoints
@@ -118,7 +118,6 @@ app/
 └── security/      # Auth & JWT logic
 
 tests/             # Automated tests
-
 ````
 
 ## Tech Stack
