@@ -71,6 +71,8 @@ Interactive API documentation:
 - Live: http://34.88.27.49:8000/docs (when server is running)
 - Local: http://localhost:8000/docs
 
+The live API is hosted on a cloud VM and may not always be running.
+
 Includes:
 
 - Books CRUD
@@ -103,16 +105,21 @@ Run tests locally:
 python -m pytest -v
 ```
 
-## Project Structure
+````md
+## 📁 Project Structure
 
+```text
 app/
 ├── main.py
-├── routes/ 
-├── models/ 
-├── crud/ 
-├── database/ 
-├── security/
-tests/
+├── routes/        # API endpoints
+├── models/        # Database models
+├── crud/          # Database operations
+├── database/      # DB setup
+└── security/      # Auth & JWT logic
+
+tests/             # Automated tests
+
+````
 
 ## Tech Stack
 
