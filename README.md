@@ -4,7 +4,7 @@ A REST API for managing books and authors, built using FastAPI, SQLModel, and SQ
 
 ## Status
 
-In progress — core backend features implemented, currently expanding toward authentication and user-specific data
+In progress — core backend features implemented, currently implementing JWT-based authentication and user-specific functionality
 
 ## Core Features
 
@@ -14,6 +14,7 @@ In progress — core backend features implemented, currently expanding toward au
 - Offset-based pagination (page & limit)
 - Search and filtering for authors by name and genre
 - Search and filtering for books by title, author_id, genre, and release_year
+- User authentication with password hashing and JWT access tokens (login flow implemented)
 
 ## Backend & Architecture
 
@@ -22,6 +23,16 @@ In progress — core backend features implemented, currently expanding toward au
 - Basic error handling with HTTP exceptions
 - Validation to prevent deleting authors with existing books
 - Wrote comprehensive API tests with pytest (covering CRUD operations, validation, and error cases)
+- Dependency-based authentication flow using FastAPI Depends
+- Separation of concerns between authentication, routes, and database layers
+
+## Authentication
+
+- JWT-based authentication with login flow implemented
+- Password hashing using passlib (bcrypt)
+- Access tokens generated on login
+- Protected routes using dependency injection
+- Token decoding and user validation via dependency (`get_current_user`)
 
 ## Deployment
 
@@ -29,7 +40,7 @@ The API has been deployed to a cloud environment using Google Cloud Platform.
 
 - Deployed the application to an Ubuntu-based VM on GCP
 - Configured networking and firewall rules to expose a public API endpoint
-- Ran the application using Gunicorn with Uvicorn workers
+- Configured production-ready server using Gunicorn with Uvicorn workers
 - Verified the API through a public endpoint and Swagger UI
 
 ## Project Direction
@@ -42,7 +53,6 @@ The goal is to expand it into a personal reading tracker API, where users can ma
 
 The following features are planned for future development:
 
-- JWT-based authentication (login, token handling)
 - Role-based authorization (user vs admin)
 - User-specific reading list (read / to-read / reading)
 - Favorite authors functionality
