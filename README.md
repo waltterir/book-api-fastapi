@@ -6,6 +6,17 @@ A REST API for managing books and authors, built using FastAPI, SQLModel, and SQ
 
 In progress — core backend features implemented, currently implementing JWT-based authentication and user-specific functionality
 
+## Overview
+
+Production-style REST API built with FastAPI, featuring authentication, testing, and cloud deployment.
+
+- JWT authentication & protected routes
+- Modular backend architecture
+- Automated testing with pytest
+- Deployed on GCP Ubuntu VM (Gunicorn + Uvicorn)
+
+Designed to simulate a real-world backend system
+
 ## Core Features
 
 - Implemented full CRUD operations for books and authors via REST API
@@ -14,6 +25,14 @@ In progress — core backend features implemented, currently implementing JWT-ba
 - Offset-based pagination (page & limit)
 - Search and filtering for authors by name and genre
 - Search and filtering for books by title, author_id, genre, and release_year
+
+## Authentication
+
+- JWT-based authentication (access tokens)
+- Password hashing with bcrypt (passlib)
+- Login & registration flow
+- Protected routes using FastAPI dependencies
+- Token validation via get_current_user
 - User authentication with password hashing and JWT access tokens (login flow implemented)
 
 ## Backend & Architecture
@@ -26,13 +45,37 @@ In progress — core backend features implemented, currently implementing JWT-ba
 - Dependency-based authentication flow using FastAPI Depends
 - Separation of concerns between authentication, routes, and database layers
 
-## Authentication
+## ⚙️ Setup & Run
 
-- JWT-based authentication with login flow implemented
-- Password hashing using passlib (bcrypt)
-- Access tokens generated on login
-- Protected routes using dependency injection
-- Token decoding and user validation via dependency (`get_current_user`)
+### 1. Clone repository
+
+git clone ...
+cd ...
+
+### 2. Install dependencies
+
+pip install -r requirements.txt
+
+### 3. Run application
+
+uvicorn app.main:app --reload
+
+### 4. Open API docs
+
+http://localhost:8000/docs
+
+## API Usage
+
+Interactive API documentation:
+
+👉 Live: http://34.88.27.49:8000/docs  
+👉 Local: http://localhost:8000/docs
+
+Includes:
+
+- Books CRUD
+- Authors CRUD
+- Authentication endpoints
 
 ## Deployment
 
@@ -42,30 +85,6 @@ The API has been deployed to a cloud environment using Google Cloud Platform.
 - Configured networking and firewall rules to expose a public API endpoint
 - Configured production-ready server using Gunicorn with Uvicorn workers
 - Verified the API through a public endpoint and Swagger UI
-
-## Project Direction
-
-This project started as a practice project for learning FastAPI and backend fundamentals.
-
-The goal is to expand it into a personal reading tracker API, where users can manage their own reading lists, track reading status, and interact with books and authors.
-
-## Planned Features
-
-The following features are planned for future development:
-
-- Role-based authorization (user vs admin)
-- User-specific reading list (read / to-read / reading)
-- Favorite authors functionality
-- Structured error handling with meaningful HTTP responses
-
-## Tech Stack
-
-- Python
-- FastAPI
-- SQLModel
-- SQLite
-- Gunicorn (application server)
-- Google Cloud (Compute Engine VM)
 
 ## Testing
 
@@ -84,32 +103,36 @@ Run tests locally:
 python -m pytest -v
 ```
 
+## Project Structure
 
-## Endpoints
+app/
+├── main.py
+├── routes/
+├── models/
+├── schemas/
+├── database/
+├── services/
+├── auth/
+├── tests/
 
-### Authors
+## Tech Stack
 
-- GET /authors
-- POST /authors
-- GET /authors/{id}
-- PUT /authors/{author_id}
-- DELETE /authors/{id}
-- GET /authors/{id}/books
+- Python
+- FastAPI
+- SQLModel
+- SQLite
+- Gunicorn (application server)
+- Google Cloud (Compute Engine VM)
 
-### Books
+## Project Direction
 
-- GET /books
-- POST /books
-- GET /books/{id}
-- PUT /books/{book_id}
-- DELETE /books/{id}
+This project started as a learning exercise, but as I got deeper into backend development, I expanded it into a production-style API with authentication, testing, and cloud deployment.
 
-## Run locally
+## Planned Features
 
-```md
-Option 1 (recommended):
-uvicorn app.main:app --reload
+The following features are planned for future development:
 
-Option 2 (FastAPI CLI):
-fastapi dev app/main.py
-```
+- Role-based authorization (user vs admin)
+- User-specific reading list (read / to-read / reading)
+- Favorite authors functionality
+- Structured error handling with meaningful HTTP responses
