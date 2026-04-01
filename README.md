@@ -107,12 +107,12 @@ python -m pytest -v
 
 app/
 ├── main.py
-├── routes/ # API endpoints
-├── models/ # SQLModel models
-├── crud/ # Database operations
-├── database/ # DB setup and session
-├── security/ # Authentication & JWT logic
-tests/ # Automated tests
+├── routes/ 
+├── models/ 
+├── crud/ 
+├── database/ 
+├── security/
+tests/
 
 ## Tech Stack
 
