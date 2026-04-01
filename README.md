@@ -68,7 +68,7 @@ http://localhost:8000/docs
 
 Interactive API documentation:
 
-👉 Live: http://34.88.27.49:8000/docs  (when server is running)
+👉 Live: http://34.88.27.49:8000/docs (when server is running)
 👉 Local: http://localhost:8000/docs
 
 Includes:
@@ -107,13 +107,12 @@ python -m pytest -v
 
 app/
 ├── main.py
-├── routes/
-├── models/
-├── schemas/
-├── database/
-├── services/
-├── auth/
-├── tests/
+├── routes/ # API endpoints
+├── models/ # SQLModel models
+├── crud/ # Database operations
+├── database/ # DB setup and session
+├── security/ # Authentication & JWT logic
+tests/ # Automated tests
 
 ## Tech Stack
 
