@@ -4,7 +4,7 @@ A REST API for managing books and authors, built using FastAPI, SQLModel, and SQ
 
 ## Status
 
-In progress — core backend features implemented, currently implementing JWT-based authentication and user-specific functionality
+Core backend features implemented, including JWT-based authentication and user-specific functionality.
 
 ## Overview
 
