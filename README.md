@@ -137,7 +137,7 @@ This project started as a learning exercise, but as I got deeper into backend de
 
 The following features are planned for future development:
 
+- Containerize the application with Docker
 - Role-based authorization (user vs admin)
-- User-specific reading list (read / to-read / reading)
-- Favorite authors functionality
-- Structured error handling with meaningful HTTP responses
+- User-specific data (reading lists / favorites)
+- Favorite authors functionalit
