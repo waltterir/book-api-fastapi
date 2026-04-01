@@ -2,7 +2,7 @@ from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 import jwt
 
-SECRET_KEY = "your-secret-key"
+SECRET_KEY = "salainenavainkuinkamontakirjaintatäytyyollajokoriittäis"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -23,3 +23,4 @@ def create_access_token(subject: str) -> str:
     token = jwt.encode(payload, SECRET_KEY, algorithm = ALGORITHM)
 
     return token
+
