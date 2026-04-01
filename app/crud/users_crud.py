@@ -1,7 +1,7 @@
-from fastapi import HTTPException, Response, status
+from fastapi import HTTPException, status
 from sqlmodel import Session, select
 from ..models.models import UserCreate, User, UserLogin
-from ..security.security import hash_password, verify_password
+from ..security.security import hash_password, verify_password, create_access_token
 
 def get_user_by_email(session: Session, email: str):
     result = session.exec(select(User).where(User.email == email)).first()
@@ -31,7 +31,12 @@ def authenticate_user(session: Session, user_data: UserLogin):
     
     verified_password = verify_password(user_data.password, user.hashed_password)
     if not verified_password:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid password")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
     
-    return user
+    access_token = create_access_token(user.email)
+    
+    return {
+        "access_token": access_token,
+        "token_type": "bearer"
+    }
 
