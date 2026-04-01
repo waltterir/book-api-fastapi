@@ -68,8 +68,8 @@ http://localhost:8000/docs
 
 Interactive API documentation:
 
-👉 Live: http://34.88.27.49:8000/docs (when server is running)
-👉 Local: http://localhost:8000/docs
+- Live: http://34.88.27.49:8000/docs (when server is running)
+- Local: http://localhost:8000/docs
 
 Includes:
 
