@@ -103,6 +103,12 @@ Run the container
 docker run -p 8000:8000 book-api
 ```
 
+Or use Docker Compose:
+
+```bash
+docker compose up --build
+```
+
 Open API docs
 
 http://localhost:8000/docs
@@ -151,6 +157,9 @@ app/
 └── security/      # Auth & JWT logic
 
 tests/             # Automated tests
+Dockerfile         # Docker image configuration
+compose.yaml       # Docker compose setup (app + volume)
+requirements.txt   # Python dependencies
 ```
 
 ## Tech Stack
