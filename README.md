@@ -47,20 +47,50 @@ Designed to simulate a real-world backend system
 
 ## ⚙️ Setup & Run
 
-### 1. Clone repository
+### Run locally
 
+Clone repository
+
+```bash
 git clone ...
 cd ...
+```
 
-### 2. Install dependencies
+Install dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-### 3. Run application
+Run application
 
+```bash
 uvicorn app.main:app --reload
+```
 
-### 4. Open API docs
+Open API docs
+
+http://localhost:8000/docs
+
+---
+
+### Run with Docker
+
+The application can be run in an isolated container using Docker.
+
+Build the Docker image
+
+```bash
+docker build -t book-api .
+```
+
+Run the container
+
+```bash
+docker run -p 8000:8000 book-api
+```
+
+Open API docs
 
 http://localhost:8000/docs
 
