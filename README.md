@@ -1,6 +1,8 @@
 # Book API (FastAPI)
 
-A REST API for managing books and authors, built using FastAPI, SQLModel, and SQLite.
+A production-style REST API for managing books and authors, built with FastAPI, featuring authentication, testing, Docker containerization, and cloud deployment.
+
+> FastAPI backend with authentication, Docker, and cloud deployment.
 
 ## Status
 
@@ -14,6 +16,7 @@ Production-style REST API built with FastAPI, featuring authentication, testing,
 - Modular backend architecture
 - Automated testing with pytest
 - Deployed on GCP Ubuntu VM (Gunicorn + Uvicorn)
+- Containerized with Docker
 
 Designed to simulate a real-world backend system
 
@@ -157,6 +160,7 @@ tests/             # Automated tests
 - SQLite
 - Gunicorn (application server)
 - Google Cloud (Compute Engine VM)
+- Docker (containerization)
 
 ## Project Direction
 
@@ -166,7 +170,6 @@ This project started as a learning exercise, but as I got deeper into backend de
 
 The following features are planned for future development:
 
-- Containerize the application with Docker
 - Role-based authorization (user vs admin)
 - User-specific data (reading lists / favorites)
 - Favorite authors functional
