@@ -1,8 +1,8 @@
 # Book API (FastAPI)
 
-A production-style REST API for managing books and authors, built with FastAPI, featuring authentication, testing, Docker containerization, and cloud deployment.
+Production-style FastAPI backend with JWT authentication, testing, Docker, and GCP deployment.
 
-> FastAPI backend with authentication, Docker, and cloud deployment.
+> Deployed on a Google Cloud VM with a production server setup (Gunicorn + Uvicorn).
 
 ## Key Highlights
 
@@ -10,7 +10,7 @@ A production-style REST API for managing books and authors, built with FastAPI, 
 - Implemented secure JWT authentication with protected routes
 - Designed relational data models using SQLModel (Author ↔ Books)
 - Containerized the application using Docker for consistent environments
-- Wrote automated tests with pytest covering CRUD, validation, and error cases
+- Wrote automated tests with pytest covering CRUD, validation, and error handling
 
 ## Status
 
@@ -18,9 +18,7 @@ Core backend features implemented, including JWT-based authentication and user-s
 
 ## Overview
 
-This project is a production-style REST API built with FastAPI to manage books and authors.
-
-It is designed to simulate a real-world backend system, focusing on authentication, modular architecture, automated testing, and cloud deployment.
+Production-style REST API for managing books and authors, focusing on authentication, modular architecture, testing, and cloud deployment.
 
 ## Core Features
 
@@ -177,11 +175,11 @@ requirements.txt   # Python dependencies
 This project started as a learning exercise, but as I got deeper into backend development, I expanded it into a production-style API with authentication, testing, and cloud deployment.
 
 ## What I Learned
-  
-- Designing modular backend architecture with clear separation of concerns
-- Implementing secure authentication using JWT and dependency injection
-- Deploying Python applications on a cloud VM using production servers
-- Writing meaningful automated tests for API validation and edge cases
+
+- Designing modular backend architecture  
+- Implementing JWT authentication  
+- Deploying APIs on GCP  
+- Writing automated tests
 
 ## Planned Features
 
