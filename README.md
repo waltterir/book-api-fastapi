@@ -181,13 +181,4 @@ This project started as a learning exercise, but as I got deeper into backend de
 - Deploying APIs on GCP  
 - Writing automated tests
 
-## Planned Features
-
-The following features are planned for future development:
-
-- Role-based authorization (user vs admin)
-- User-specific data (reading lists / favorites)
-- Favorite authors functionality
-
-
 
